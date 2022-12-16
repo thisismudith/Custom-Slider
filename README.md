@@ -179,7 +179,7 @@ This sets the background color of the thumb to `rgb(0, 255, 0)` (light green).
 This sets the background color of the thumb to `hsl(39, 100%, 50%)` (orange).
 
 ### `doneColor`:
-**Default Value:** ![#129112](https://placehold.co/15x15/129112/129112.png) `#129112`<br>
+**Default Value:** ![#0084c2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084c2`<br>
 **Acceptable Value:** `color value` (such as `white`, `#ffffff`)<br>
 **Usage:**
 ```
