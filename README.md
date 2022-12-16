@@ -29,7 +29,7 @@ _Note: This is a default slider which can be [customized](#customizable-attribut
 - [`doneColor`](#doneColor): The color of the track when max value is reached. 
 - [`transition`](#transition): The common transitional change in the slider. _(Default is `0s` or instant)_
 
-_(Default values are appicable if nothing is passed or when the passed input is invalid)_
+_(Default values are appicable if nothing is passed or when the passed input is not acceptable)_
 <br>
 ### `min`:
 **Default Value:** `0`<br>
@@ -95,12 +95,12 @@ This sets the height of the slider to `50%` of the available area.
 
 ### `thumbWidth`:
 **Default Value:** `8px`<br>
-**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
+**Acceptable Value(s):** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
 ```
-<custom-slider thumbWidth="10"></custom-slider>
+<custom-slider thumbWidth="12"></custom-slider>
 ```
-This sets the width of the thumb to `10px` _(Both `10` and `10px` will return the same output)_.
+This sets the width of the thumb to `12px` _(Both `12` and `12px` will return the same output)_.
 ```
 <custom-slider thumbWidth="10%"></custom-slider>
 ```
@@ -108,13 +108,17 @@ This sets the width of the thumb to `10%` of the available area.
 
 ### `thumbHeight`:
 **Default Value:** `height + 7px` (`7px` more than the value of `height`) <br>
-**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
+**Acceptable Value(s):** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
 ```
-<custom-slider height="50"></custom-slider>
+<custom-slider thumbHeight="50"></custom-slider>
 ```
 This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider thumbHeight="5%"></custom-slider>
 ```
 This sets the height of the thumb to `5%` of the available area.
+
+### `thumbColor`:
+**Default Value:** ![#EDEDEE](https://placehold.co/15x15/EDEDEE/EDEDEE.png) `#EDEDEE`<br>
+**Acceptable Value(s):** `color value` (such as `red`, `#ff00000`)<br>
