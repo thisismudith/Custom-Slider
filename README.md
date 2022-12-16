@@ -14,30 +14,47 @@ _Note: This is a default slider which can be [customized](#customizable-attribut
 
 ## Customizable Attributes:
 
-- `min`: The minimum value of the range. _(Default is `0`)_
-- `max`: The maximum value of the range. _(Default is `100`)_
-- `value`: The default value of the range. _(Default is `0`)_
-- `step`: The step of the range. _(Default is `1`)_
-- `width`: The width of the slider. _(Default is `100%`)_
-- `height`: The height of the slider. _(Default is `8px`)_
-- `thumbWidth`: The width of the thumb. _(Default is `8px`_
-- `thumbHeight`: The height of the thumb. _(Default is `18px`)_
-- `thumbColor`: The color of the thumb. _(Default is ![#EDEDEE](https://placehold.co/15x15/EDEDEE/EDEDEE.png) `#EDEDEE`)_
-- `textColor`: The color of the displayed value. _(Default is ![#0084C2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084C2`)_
-- `fillColor`: The color of the track that is covered. _(Default is ![#0084C2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084C2`)_
-- `trackColor`: The color of the track. _(Default is ![#494949](https://placehold.co/15x15/494949/494949.png) `#494949`)_
-- `doneColor`: The color of the track when max value is reached. 
-- `transition`: The common transitional change in the slider. _(Default is `0s` or instant)_
+- [`min`](#min): The minimum value of the range. _(Default is `0`)_
+- [`max`](#max): The maximum value of the range. _(Default is `100`)_
+- [`value`](#value): The default value of the range. _(Default is `0`)_
+- [`step`](#step): The step of the range. _(Default is `1`)_
+- [`width`](#width): The width of the slider. _(Default is `100%`)_
+- [`height`](#height): The height of the slider. _(Default is `8px`)_
+- [`thumbWidth`](#thumbWidth): The width of the thumb. _(Default is `8px`_
+- [`thumbHeight`](#thumbHeigh): The height of the thumb. _(Default is `18px`)_
+- [`thumbColor`](#thumbColor): The color of the thumb. _(Default is ![#EDEDEE](https://placehold.co/15x15/EDEDEE/EDEDEE.png) `#EDEDEE`)_
+- [`textColor`](#textColor): The color of the displayed value. _(Default is ![#0084C2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084C2`)_
+- [`fillColor`](#fillColor): The color of the track that is covered. _(Default is ![#0084C2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084C2`)_
+- [`trackColor`](#trackColor): The color of the track. _(Default is ![#494949](https://placehold.co/15x15/494949/494949.png) `#494949`)_
+- [`doneColor`](#doneColor): The color of the track when max value is reached. 
+- [`transition`](#transition): The common transitional change in the slider. _(Default is `0s` or instant)_
 
-### Brief into Customization:
-#### `width`:
+_(Default values are appicable if nothing is passed or when the passed input is invalid)_
+
+### `min`:
+**Default Value:** `0`
+**Acceptable Value Types:** `int`
+<br>
+**Usage:**
+### `width`:
+**Default Value:** `100%`
+<br>**Usage:**
+This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
+```
+<custom-slider width="500"></custom-slider>
+```
+This sets the width of the slider to `50%` of the screen size.
+```
+<custom-slider width="50%"></custom-slider>
+```
+### `width`:
 **Default Value:** If no value is given, the default `100%` will be used.
-**Pixel Use:**
+<br>**Pixel Use:**
 ```
 <custom-slider width="500"></custom-slider>
 ```
 This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
-**Percentage Use:**
+<br>**Percentage Use:**
 ```
 <custom-slider width="50%"></custom-slider>
 ```
