@@ -63,7 +63,7 @@ class customSlider extends HTMLElement{
     constructor(){
         super();
         this.min   = parseFloat(this.getAttribute("min"))               || 0;
-        this.value = parseFloat(this.getAttribute("value"))             || this.min;
+        this.value = tryCatch(()=>{return parseFloat(this.getAttribute("value"))},()=>{return this.min});
         this.max   = parseFloat(this.getAttribute("max"))               || 100;
         this.step  = parseFloat(this.getAttribute("step"))              || 1;
         this.width = parseFloat(this.getAttribute("width"));
@@ -83,7 +83,6 @@ class customSlider extends HTMLElement{
         this.transition = thisSlider.getAttribute("transition");
         this.style.position = "relative";
         this.root = this.attachShadow({mode:"open"});
-        this.dragging = false;
         this.create();
         this.update();
     }
@@ -146,10 +145,16 @@ class customSlider extends HTMLElement{
         if (!this.hasAttribute("hideValue")) value = this.root.getElementById("value");
         if (slider.value == this.max){
             track.style.setProperty('--slider-fill-color', this.doneColor);
-            if (value) text.style.color = this.doneColor;
+            if (value){
+                text.style.color = this.doneColor;
+                text.style.fontWeight = "bold";
+            }
         }else{
             track.style.setProperty('--slider-fill-color', this.fillColor);
-            if (value) text.style.color = this.textColor;
+            if (value){
+                text.style.color = this.textColor;
+                text.style.fontWeight = "normal";
+            }
         };
         let percent = (slider.value-this.min)/(this.max-this.min) * 100;
         if (value) value.innerText = slider.value;
