@@ -1,3 +1,4 @@
+var min;
 let stylesheetText = `
 #slider-container{
     --value: 0;
@@ -63,7 +64,8 @@ class customSlider extends HTMLElement{
     constructor(){
         super();
         this.min   = parseFloat(this.getAttribute("min"))               || 0;
-        this.value = tryCatch(()=>{return parseFloat(this.getAttribute("value"))},()=>{return this.min});
+        min = this.min
+        this.value = getVal();
         this.max   = parseFloat(this.getAttribute("max"))               || 100;
         this.step  = parseFloat(this.getAttribute("step"))              || 1;
         this.width = parseFloat(this.getAttribute("width"));
@@ -168,5 +170,10 @@ function checkColor(clr, clrDefault){
     s.color = clr;
     if (s.color !== '') return clr
     else return clrDefault;
+}
+function getVal(){
+    var tempVal = parseFloat(document.querySelector("custom-slider").getAttribute("value"))
+    if (!tempVal && tempVal != 0) return min
+    else return tempVal
 }
 customElements.define('custom-slider', customSlider);
