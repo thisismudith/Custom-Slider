@@ -44,77 +44,77 @@ This sets the minimum value of the slider to `10`.
 **Default Value:** `100`<br>
 **Acceptable Value Type:** `int`<br>
 **Usage:**<br>
-This sets the maximum value of the slider to `50`.
 ```
 <custom-slider max=50></custom-slider>
 ```
+This sets the maximum value of the slider to `50`.
 
 ### `value`:
 **Default Value:** `min` (value of `min`)<br>
 **Acceptable Value Type:** `int > 0`<br>
 **Usage:**<br>
-This sets the starting value of the slider to `10`. _(If value passed is outside the `min` and `max` bounds, the closest bound is applied)_
 ```
 <custom-slider value=10></custom-slider>
 ```
+This sets the starting value of the slider to `10`. _(If value passed is outside the `min` and `max` bounds, the closest bound is applied)_
 
 ### `step`:
 **Default Value:** `1`<br>
 **Acceptable Value Type:** `int`<br>
 **Usage:**<br>
-This sets the step of the slider to `5`. _(If value passed is negative, the absolute is applied)_
 ```
 <custom-slider step=5></custom-slider>
 ```
+This sets the step of the slider to `5`. _(If value passed is negative, the absolute is applied)_
 
 ### `width`:
 **Default Value:** `100%`<br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
-This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
 ```
 <custom-slider width="500"></custom-slider>
 ```
-This sets the width of the slider to `50%` of the available area.
+This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
 ```
 <custom-slider width="50%"></custom-slider>
 ```
+This sets the width of the slider to `50%` of the available area.
 
 ### `height`:
 **Default Value:** `18px`<br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
-This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider height="50"></custom-slider>
 ```
-This sets the height of the slider to `50%` of the available area.
+This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider height="50%"></custom-slider>
 ```
+This sets the height of the slider to `50%` of the available area.
 
 ### `thumbWidth`:
 **Default Value:** `8px`<br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
-This sets the width of the thumb to `10px` _(Both `10` and `10px` will return the same output)_.
 ```
 <custom-slider thumbWidth="10"></custom-slider>
 ```
-This sets the width of the thumb to `10%` of the available area.
+This sets the width of the thumb to `10px` _(Both `10` and `10px` will return the same output)_.
 ```
 <custom-slider thumbWidth="10%"></custom-slider>
 ```
+This sets the width of the thumb to `10%` of the available area.
 
 ### `thumbHeight`:
 **Default Value:** `height + 7px` (`7px` more than the value of `height`) <br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
-This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider height="50"></custom-slider>
 ```
-This sets the height of the thumb to `5%` of the available area.
+This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider thumbHeight="5%"></custom-slider>
 ```
+This sets the height of the thumb to `5%` of the available area.
