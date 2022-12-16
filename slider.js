@@ -27,8 +27,8 @@ let stylesheetText = `
     position: absolute;
     left: 0%;
     width: 100%;
-    height: 8px;
-    border-radius: 0.25rem;
+    height: var(--track-height);
+    border-radius: var(--track-radius);
     background: var(--slider-track-color);
     overflow: hidden;
 }
@@ -49,7 +49,7 @@ let stylesheetText = `
     appearance: none;
     width : var(--thumb-width);
     height: var(--thumb-height);
-    border-radius: 1px;
+    border-radius: var(--thumb-radius);
     background: var(--slider-thumb-color);
     cursor: ew-resize;
     z-index: 99;
@@ -70,19 +70,31 @@ class customSlider extends HTMLElement{
         this.step  = parseFloat(this.getAttribute("step"))              || 1;
         this.width = parseFloat(this.getAttribute("width"));
         this.height = parseFloat(this.getAttribute("height"))           || 18;
+        this.trackRadius = parseFloat(this.getAttribute("trackRadius")) || 4;
+        this.thumbRadius = parseFloat(this.getAttribute("thumbRadius")) || 1;
         this.thumbWidth = parseFloat(this.getAttribute("thumbWidth"))   || 8;
         this.thumbHeight = parseFloat(this.getAttribute("thumbHeight")) || this.height+7;
         this.thumbColor = checkColor(this.getAttribute("thumbColor"),"#EDEDEE");
         this.textColor = checkColor(this.getAttribute("textColor"),"#0084c2");
         this.fillColor = checkColor(this.getAttribute("fillColor"),"#0084c2");
         this.trackColor = checkColor(this.getAttribute("trackColor"),"#494949");
-        this.doneColor = checkColor(this.getAttribute("doneColor"),"#129112");
+        this.doneColor = checkColor(this.getAttribute("doneColor"),"#0084c2");
         var thisSlider = document.querySelector("custom-slider")
-        this.widthP = tryCatch(()=>{return thisSlider.getAttribute("width").includes("%")}, ()=>{return false})
-        this.heightP = tryCatch(()=>{return thisSlider.getAttribute("height").includes("%")}, ()=>{return false})
-        this.thumbWidthP = tryCatch(()=>{return thisSlider.getAttribute("thumbWidth").includes("%")}, ()=>{return false})
-        this.thumbHeightP = tryCatch(()=>{return thisSlider.getAttribute("thumbHeight").includes("%")}, ()=>{return false})
-        this.transition = thisSlider.getAttribute("transition");
+        this.widthP = tryCatch(()=>{return thisSlider.getAttribute("width").includes("%")}, ()=>{return false});
+        this.heightP = tryCatch(()=>{return thisSlider.getAttribute("height").includes("%")}, ()=>{return false});
+        this.thumbWidthP = tryCatch(()=>{return thisSlider.getAttribute("thumbWidth").includes("%")}, ()=>{return false});
+        this.thumbRadiusP = tryCatch(()=>{return thisSlider.getAttribute("thumbRadius").includes("%")}, ()=>{return false});
+        this.thumbHeightP = tryCatch(()=>{return thisSlider.getAttribute("thumbHeight").includes("%")}, ()=>{return false});
+        this.trackRadiusP = tryCatch(()=>{return thisSlider.getAttribute("trackRadius").includes("%")}, ()=>{return false});
+        this.transition = this.getAttribute("transition");
+        if (((this.max-this.min)/this.step)%1 != 0){
+            if (this.hasAttribute("forceContinue")){
+
+            }
+            else{
+                console.log("Values entered are not proportional. Nearest reset was applied!")
+            }
+        }
         this.style.position = "relative";
         this.root = this.attachShadow({mode:"open"});
         this.create();
@@ -121,12 +133,12 @@ class customSlider extends HTMLElement{
                 value.style.width = this.width+"px";
             };
         };
-        if (this.heightP) sliderTrack.style.height = this.height+"%";
-        else sliderTrack.style.height = this.height+"px";
-        if (this.thumbWidthP) this.style.setProperty("--thumb-width", this.thumbWidth+"%")
-        else this.style.setProperty("--thumb-width", this.thumbWidth+"px")
-        if (this.thumbHeightP) this.style.setProperty("--thumb-height", this.thumbHeight+"%");
-        else this.style.setProperty("--thumb-height", this.thumbHeight+"px");
+        percentPixel(this.heightP, "--track-height", this.height)
+        percentPixel(this.thumbWidthP, "--thumb-width", this.thumbWidth)
+        percentPixel(this.thumbHeightP, "--thumb-height", this.thumbHeight)
+        percentPixel(this.thumbRadiusP, "--thumb-radius", this.thumbRadius)
+        percentPixel(this.trackRadiusP, "--track-radius", this.trackRadius)
+        console.log(this.style.getPropertyValue("--track-radius"))
         value.id = "value";
         slider.addEventListener("input",this.update.bind(this));
         sliderContainer.style.setProperty("--slider-thumb-color", this.thumbColor);
@@ -177,4 +189,20 @@ function getVal(){
     if (!tempVal && tempVal != 0) return min
     else return tempVal
 }
+function percentPixel(bool, prop, val){
+    if (bool) document.querySelector("custom-slider").style.setProperty(prop, val+"%")
+    else document.querySelector("custom-slider").style.setProperty(prop, val+"px")
+}
 customElements.define('custom-slider', customSlider);
+function getFactors(num, close){
+    var res = {};
+    for(let i = 1; i <= num; i++) {
+        if(num % i == 0) {
+            res[i] = Math.abs(close-i);
+        }
+    }
+    return Object.keys(res).find(key => res[key] === Math.min.apply(null,Array.from(Object.values(res))));
+}
+factors = getFactors(100, 8)
+console.log(factors)
+// Work on getting closest factor for negative integers and decimals
