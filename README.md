@@ -4,8 +4,14 @@ This is an [easy-to-use](#basic-manifestation) custom range slider with [14 conf
 ## Basic Manifestation:
 First, add this script tag in the ending of your body:
 ```
-<script src="https://"></script>
+<script src="https://themyth1710.github.io/Custom-Slider/slider.js"></script>
 ```
+Next, for a simple use add the HTML snippet anywhere you wish to create a slider:
+```
+<custom-slider></custom-slider>
+```
+_Note: This is a default slider which can be [customized](#customizable-attributes)_
+
 ## Customizable Attributes:
 
 - `min`: The minimum value of the range. _(Default is `0`)_
@@ -22,3 +28,17 @@ First, add this script tag in the ending of your body:
 - `trackColor`: The color of the track. _(Default is ![#494949](https://placehold.co/15x15/494949/494949.png) `#494949`)_
 - `doneColor`: The color of the track when max value is reached. 
 - `transition`: The common transitional change in the slider. _(Default is `0s` or instant)_
+
+### Brief into Customization:
+#### `width`:
+**Default Value:** If no value is given, the default `100%` will be used.
+**Pixel Use:**
+```
+<custom-slider width="500"></custom-slider>
+```
+This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
+**Percentage Use:**
+```
+<custom-slider width="50%"></custom-slider>
+```
+This sets the width of the slider to `50%` of the screen size.
