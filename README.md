@@ -1,5 +1,5 @@
 # Custom-Slider
-This is an [easy-to-use](#installation) custom range slider with [14 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
+This is an [easy-to-use](#installation) custom range slider with [18 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
 ## Installation:
 Add this script tag in the ending of your body:
@@ -179,7 +179,7 @@ This sets the background color of the thumb to `rgb(0, 255, 0)` (light green).
 This sets the background color of the thumb to `hsl(39, 100%, 50%)` (orange).
 
 ### `doneColor`:
-**Default Value:** ![#0084c2](https://placehold.co/15x15/0084c2/0084c2.png) `#0084c2`<br>
+**Default Value:** `fillColor` (same value as of `fillColor`)<br>
 **Acceptable Value:** `color value` (such as `white`, `#ffffff`)<br>
 **Usage:**
 ```
