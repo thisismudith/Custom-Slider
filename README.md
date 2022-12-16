@@ -16,7 +16,7 @@ _Note: This is a default slider which can be [customized](#customizable-attribut
 
 - [`min`](#min): The minimum value of the range. _(Default is `0`)_
 - [`max`](#max): The maximum value of the range. _(Default is `100`)_
-- [`value`](#value): The default value of the range. _(Default is `0`)_
+- [`value`](#value): The starting value of the range. _(Default is `0`)_
 - [`step`](#step): The step of the range. _(Default is `1`)_
 - [`width`](#width): The width of the slider. _(Default is `100%`)_
 - [`height`](#height): The height of the slider. _(Default is `8px`)_
@@ -35,6 +35,38 @@ _(Default values are appicable if nothing is passed or when the passed input is 
 **Default Value:** `0`<br>
 **Acceptable Value Type:** `int`<br>
 **Usage:**<br>
+This sets the minimum value of the slider to `10`.
+```
+<custom-slider min=10></custom-slider>
+```
+
+### `max`:
+**Default Value:** `100`<br>
+**Acceptable Value Type:** `int`<br>
+**Usage:**<br>
+This sets the maximum value of the slider to `50`.
+```
+<custom-slider max=50></custom-slider>
+```
+
+### `value`:
+**Default Value:** `min` (value of `min`)<br>
+**Acceptable Value Type:** `int > 0`<br>
+**Usage:**<br>
+This sets the starting value of the slider to `10`. _(If value passed is outside the `min` and `max` bounds, the closest bound is applied)_
+```
+<custom-slider value=10></custom-slider>
+```
+
+### `step`:
+**Default Value:** `1`<br>
+**Acceptable Value Type:** `int`<br>
+**Usage:**<br>
+This sets the step of the slider to `5`. _(If value passed is negative, the absolute is applied)_
+```
+<custom-slider step=5></custom-slider>
+```
+
 ### `width`:
 **Default Value:** `100%`<br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
@@ -43,19 +75,46 @@ This sets the width of the slider to `500px` _(Both `500` and `500px` will retur
 ```
 <custom-slider width="500"></custom-slider>
 ```
-This sets the width of the slider to `50%` of the screen size.
+This sets the width of the slider to `50%` of the available area.
 ```
 <custom-slider width="50%"></custom-slider>
 ```
+
 ### `height`:
 **Default Value:** `18px`<br>
 **Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
 **Usage:**<br>
+This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
 ```
 <custom-slider height="50"></custom-slider>
 ```
-This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
+This sets the height of the slider to `50%` of the available area.
 ```
 <custom-slider height="50%"></custom-slider>
 ```
-This sets the height of the slider to `50%` of the screen size.
+
+### `thumbWidth`:
+**Default Value:** `8px`<br>
+**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
+**Usage:**<br>
+This sets the width of the thumb to `10px` _(Both `10` and `10px` will return the same output)_.
+```
+<custom-slider thumbWidth="10"></custom-slider>
+```
+This sets the width of the thumb to `10%` of the available area.
+```
+<custom-slider thumbWidth="10%"></custom-slider>
+```
+
+### `thumbHeight`:
+**Default Value:** `height + 7px` (`7px` more than the value of `height`) <br>
+**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)<br>
+**Usage:**<br>
+This sets the height of the slider to `50px` _(Both `50` and `50px` will return the same output)_.
+```
+<custom-slider height="50"></custom-slider>
+```
+This sets the height of the thumb to `5%` of the available area.
+```
+<custom-slider thumbHeight="5%"></custom-slider>
+```
