@@ -59,21 +59,6 @@ let stylesheetText = `
     font-family: "Poppins", sans-serif;
 }
 `;
-// function addRule (selector, css){
-//     var sheet = document.createElement("style")
-//     // var sheet = document.head.appendChild(style).sheet;
-//     cssMod = JSON.stringify(css)
-//     cssMod = cssMod.replace("{" , "").replace("}", "").split(",")
-//     cssMod.forEach(mod =>{
-//         var content = mod.split(":")[1]
-//         if (/\d/.test(content)) content = content.replaceAll("\"","")
-//         cssMod[cssMod.indexOf(mod)] = mod.split(":")[0].replaceAll("\"", "") + ":" + content
-//     })
-//     sheet.innerHTML = `${selector}{${cssMod.join(";")}}`
-//     document.head.appendChild(sheet)
-//     console.log(document.head.querySelectorAll("style")[1])
-// }
-
 class customSlider extends HTMLElement{
     constructor(){
         super();
@@ -85,11 +70,11 @@ class customSlider extends HTMLElement{
         this.height = parseFloat(this.getAttribute("height"))           || 18;
         this.thumbWidth = parseFloat(this.getAttribute("thumbWidth"))   || 8;
         this.thumbHeight = parseFloat(this.getAttribute("thumbHeight")) || this.height+7;
-        this.thumbColor = this.getAttribute("thumbColor")               || "#EDEDEE";
-        this.textColor = this.getAttribute("textColor")                 || "#0084c2";
-        this.fillColor = this.getAttribute("fillColor")                 || "#0084c2";
-        this.trackColor = this.getAttribute("trackColor")               || "#494949";
-        this.doneColor = this.getAttribute("doneColor")                 || "#129112";
+        this.thumbColor = checkColor(this.getAttribute("thumbColor"),"#EDEDEE");
+        this.textColor = checkColor(this.getAttribute("textColor"),"#0084c2");
+        this.fillColor = checkColor(this.getAttribute("fillColor"),"#0084c2");
+        this.trackColor = checkColor(this.getAttribute("trackColor"),"#494949");
+        this.doneColor = checkColor(this.getAttribute("doneColor"),"#129112");
         var thisSlider = document.querySelector("custom-slider")
         this.widthP = tryCatch(()=>{return thisSlider.getAttribute("width").includes("%")}, ()=>{return false})
         this.heightP = tryCatch(()=>{return thisSlider.getAttribute("height").includes("%")}, ()=>{return false})
@@ -124,7 +109,6 @@ class customSlider extends HTMLElement{
         slider.value = this.value;
         sliderContainer.id = "slider-container";
         sliderTrack.id = "slider-track";
-        // Add support for %
         if (this.width){
             if (this.widthP){
                 sliderTrack.style.width = this.width+"%";
@@ -153,7 +137,6 @@ class customSlider extends HTMLElement{
         this.root.appendChild(sliderContainer);
         this.root.appendChild(value);
     }
-
     update(){
         let track  = this.root.getElementById("slider-container");
         let slider = this.root.getElementById("slider");
@@ -175,4 +158,10 @@ class customSlider extends HTMLElement{
     };
 };
 function tryCatch(_try,_catch){try{return _try.call()}catch{return _catch.call()}}
+function checkColor(clr, clrDefault){
+    const s = new Option().style;
+    s.color = clr;
+    if (s.color !== '') return clr
+    else return clrDefault;
+}
 customElements.define('custom-slider', customSlider);
