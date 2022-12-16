@@ -2,8 +2,10 @@
 This is an [easy-to-use](#basic-manifestation) custom range slider with [14 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
 ## Basic Manifestation:
-
-
+First, add this script tag in the ending of your body:
+```
+<script src="https://"></script>
+```
 ## Customizable Attributes:
 
 - `min`: The minimum value of the range. _(Default is `0`)_
