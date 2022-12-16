@@ -78,7 +78,7 @@ class customSlider extends HTMLElement{
         this.textColor = checkColor(this.getAttribute("textColor"),"#0084c2");
         this.fillColor = checkColor(this.getAttribute("fillColor"),"#0084c2");
         this.trackColor = checkColor(this.getAttribute("trackColor"),"#494949");
-        this.doneColor = checkColor(this.getAttribute("doneColor"),"#0084c2");
+        this.doneColor = checkColor(this.getAttribute("doneColor"),this.fillColor);
         var thisSlider = document.querySelector("custom-slider")
         this.widthP = tryCatch(()=>{return thisSlider.getAttribute("width").includes("%")}, ()=>{return false});
         this.heightP = tryCatch(()=>{return thisSlider.getAttribute("height").includes("%")}, ()=>{return false});
