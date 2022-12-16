@@ -33,12 +33,12 @@ _(Default values are appicable if nothing is passed or when the passed input is 
 
 ### `min`:
 **Default Value:** `0`
-**Acceptable Value Types:** `int`
-<br>
+**Acceptable Value Type:** `int`
 **Usage:**
 ### `width`:
 **Default Value:** `100%`
-<br>**Usage:**
+**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)
+**Usage:**
 This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
 ```
 <custom-slider width="500"></custom-slider>
@@ -47,14 +47,14 @@ This sets the width of the slider to `50%` of the screen size.
 ```
 <custom-slider width="50%"></custom-slider>
 ```
-### `width`:
-**Default Value:** If no value is given, the default `100%` will be used.
-<br>**Pixel Use:**
+### `height`:
+**Default Value:** `18px`
+**Acceptable Value Types:** `percentage`, `CSS measurement unit` (such as `px`, `rem`)
+**Pixel Use:**
 ```
 <custom-slider width="500"></custom-slider>
 ```
 This sets the width of the slider to `500px` _(Both `500` and `500px` will return the same output)_.
-<br>**Percentage Use:**
 ```
 <custom-slider width="50%"></custom-slider>
 ```
