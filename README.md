@@ -1,9 +1,10 @@
 # Custom-Slider
-This is an easy-to-use custom range slider with [14 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
+This is an [easy-to-use](#basic-manifestation) custom range slider with [14 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
-**Basic Manifestation:**
+## Basic Manifestation:
 
-# Customizable Attributes:
+
+## Customizable Attributes:
 
 - `min`: The minimum value of the range. _(Default is `0`)_
 - `max`: The maximum value of the range. _(Default is `100`)_
