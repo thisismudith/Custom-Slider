@@ -1,4 +1,4 @@
-var min;
+var min, value;
 let stylesheetText = `
 #slider-container{
     --value: 0;
@@ -143,24 +143,25 @@ class customSlider extends HTMLElement{
         let slider = this.root.getElementById("slider");
         let text = this.root.getElementById("value");
         text.style.marginTop = this.height/2+"px";
-        var value;
-        if (!this.hasAttribute("hideValue")) value = this.root.getElementById("value");
+        var sliderValue;
+        if (!this.hasAttribute("hideValue")) sliderValue = this.root.getElementById("value");
         if (slider.value == this.max){
             track.style.setProperty('--slider-fill-color', this.doneColor);
-            if (value){
+            if (sliderValue){
                 text.style.color = this.doneColor;
                 text.style.fontWeight = "bold";
             }
         }else{
             track.style.setProperty('--slider-fill-color', this.fillColor);
-            if (value){
+            if (sliderValue){
                 text.style.color = this.textColor;
                 text.style.fontWeight = "normal";
             }
         };
         let percent = (slider.value-this.min)/(this.max-this.min) * 100;
-        if (value) value.innerText = slider.value;
-        this.setAttribute("rangeValue", slider.value);
+        if (sliderValue) sliderValue.innerText = slider.value;
+        this.setAttribute("sliderValue", slider.value);
+        value = parseFloat(slider.value);
         track.style.setProperty("--track-width", percent+"%");
     };
 };
