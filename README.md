@@ -1,5 +1,5 @@
 # Custom-Slider
-This is an easy-to-use custom range slider with [14 configurable options](#Customizable Attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
+This is an easy-to-use custom range slider with [14 configurable options](#customizable-attributes:). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
 **Basic Manifestation:**
 
