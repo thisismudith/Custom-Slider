@@ -138,7 +138,6 @@ class customSlider extends HTMLElement{
         percentPixel(this.thumbHeightP, "--thumb-height", this.thumbHeight)
         percentPixel(this.thumbRadiusP, "--thumb-radius", this.thumbRadius)
         percentPixel(this.trackRadiusP, "--track-radius", this.trackRadius)
-        console.log(this.style.getPropertyValue("--track-radius"))
         value.id = "value";
         slider.addEventListener("input",this.update.bind(this));
         sliderContainer.style.setProperty("--slider-thumb-color", this.thumbColor);
@@ -203,6 +202,4 @@ function getFactors(num, close){
     }
     return Object.keys(res).find(key => res[key] === Math.min.apply(null,Array.from(Object.values(res))));
 }
-factors = getFactors(100, 8)
-console.log(factors)
-// Work on getting closest factor for negative integers and decimals
+// Work on getting closest factor for decimals
