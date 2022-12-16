@@ -62,8 +62,8 @@ let stylesheetText = `
 class customSlider extends HTMLElement{
     constructor(){
         super();
-        this.value = parseFloat(this.getAttribute("value"))             || 0;
         this.min   = parseFloat(this.getAttribute("min"))               || 0;
+        this.value = parseFloat(this.getAttribute("value"))             || this.min;
         this.max   = parseFloat(this.getAttribute("max"))               || 100;
         this.step  = parseFloat(this.getAttribute("step"))              || 1;
         this.width = parseFloat(this.getAttribute("width"));
@@ -151,7 +151,7 @@ class customSlider extends HTMLElement{
             track.style.setProperty('--slider-fill-color', this.fillColor);
             if (value) text.style.color = this.textColor;
         };
-        let percent = slider.value/this.max * 100;
+        let percent = (slider.value-this.min)/(this.max-this.min) * 100;
         if (value) value.innerText = slider.value;
         this.setAttribute("rangeValue", slider.value);
         track.style.setProperty("--track-width", percent+"%");
