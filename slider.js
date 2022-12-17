@@ -63,16 +63,16 @@ let stylesheetText = `
 class customSlider extends HTMLElement{
     constructor(){
         super();
-        this.min   = parseFloat(this.getAttribute("min"))               || 0;
+        this.min   = parseFloat(this.getAttribute("min")) || 0;
         min = this.min
         this.value = getVal();
-        this.max   = parseFloat(this.getAttribute("max"))               || 100;
-        this.step  = parseFloat(this.getAttribute("step"))              || 1;
+        this.max   = parseFloat(this.getAttribute("max")) || 100;
+        this.step  = parseFloat(this.getAttribute("step")) || 1;
         this.width = parseFloat(this.getAttribute("width"));
-        this.height = parseFloat(this.getAttribute("height"))           || 18;
+        this.height = parseFloat(this.getAttribute("height")) || 18;
         this.trackRadius = parseFloat(this.getAttribute("trackRadius")) || 4;
         this.thumbRadius = parseFloat(this.getAttribute("thumbRadius")) || 1;
-        this.thumbWidth = parseFloat(this.getAttribute("thumbWidth"))   || 8;
+        this.thumbWidth = parseFloat(this.getAttribute("thumbWidth")) || 8;
         this.thumbHeight = parseFloat(this.getAttribute("thumbHeight")) || this.height+7;
         this.thumbColor = checkColor(this.getAttribute("thumbColor"),"#EDEDEE");
         this.textColor = checkColor(this.getAttribute("textColor"),"#0084c2");
@@ -87,12 +87,13 @@ class customSlider extends HTMLElement{
         this.thumbHeightP = tryCatch(()=>{return thisSlider.getAttribute("thumbHeight").includes("%")}, ()=>{return false});
         this.trackRadiusP = tryCatch(()=>{return thisSlider.getAttribute("trackRadius").includes("%")}, ()=>{return false});
         this.transition = this.getAttribute("transition");
-        if (((this.max-this.min)/this.step)%1 != 0){
-            if (this.hasAttribute("forceContinue")){
-
-            }
+        this.smooth = parseFloat(this.getAttribute("smooth")) || 0;
+        if (this.hasAttribute("smooth")) this.step = smooth(this.max-this.min, this.smooth)
+        else if (((this.max-this.min)/this.step)%1 != 0){
+            if (this.hasAttribute("forceContinue")) console.log('Values entered are not proportional. Reset was not applied since you passed "forceContinue".\nNote: This might cause the slider to never reach the max value')
             else{
                 console.log("Values entered are not proportional. Nearest reset was applied!")
+                this.step = getFactors(this.max-this.min,this.step)
             }
         }
         this.style.position = "relative";
@@ -193,13 +194,32 @@ function percentPixel(bool, prop, val){
     else document.querySelector("custom-slider").style.setProperty(prop, val+"px")
 }
 customElements.define('custom-slider', customSlider);
-function getFactors(num, close){
+function getFactors(num, close=null, min=true){
+    var decShifts;
+    if (/\.+/.test(num.toString())) decShifts = num.toString().split('.').at(-1).length
+    var divisor = parseInt(`1${'0'.repeat(decShifts)}`)
     var res = {};
-    for(let i = 1; i <= num; i++) {
+    num = parseFloat(num.toString().replace('.',''))
+    for(let i = 1; i < num; i++) {
         if(num % i == 0) {
-            res[i] = Math.abs(close-i);
+            if (!close && close != 0) res[i/divisor] = i/divisor
+            else{
+                if (decShifts) res[i/divisor] = Math.abs(close-i/divisor);
+                else res[i] = Math.abs(close-i);
+            }
         }
     }
-    return Object.keys(res).find(key => res[key] === Math.min.apply(null,Array.from(Object.values(res))));
+    if (min) return parseFloat(Object.keys(res).find(key => res[key] === Math.min.apply(null,Array.from(Object.values(res)))));
+    else return Object.values(res)
 }
-// Work on getting closest factor for decimals
+function smooth(range, count=null){
+    var factors = getFactors(range, null, false)
+    var factorsCount = factors.map(n => range/n)
+    if (count){
+        if (factorsCount.includes(count)) return factors[factorsCount.indexOf(count)]
+        else{
+            var closestCount = factorsCount.map(n => Math.abs(n-count));
+            return factors[closestCount.indexOf(Math.min.apply(null,closestCount))]
+        }
+    }else return factors[factorsCount.indexOf(Math.max.apply(null, factorsCount))]
+}
