@@ -1,5 +1,5 @@
 # Custom-Slider
-This is an [easy-to-use](#installation) custom range slider with [18 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
+This is an [easy-to-use](#installation) custom range slider with [19 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
 ## Installation:
 Add this script tag in the ending of your body:
@@ -249,16 +249,16 @@ This will update `step` to make the slider move smoothly.
 <custom-slider smooth="10"></custom-slider>
 ```
 This will update `step` to make the slider move smoothly with minium 10 ranges in between.<br>
-For example the range bound is `0 -50` with default step `1`. This makes the slider have 50 internal range values. Using `smooth="10"` will calculate a value such that the internal ranges are closest to `10` since it can't be always `10` _([learn more about proportionality](#the-concept-of-proportionality))_. In this case, the new step would be `5`.
+For example the range bound is `0 -50` with default step `1`. This makes the slider have 50 internal range values. Using `smooth="10"` will calculate a value such that the internal ranges are closest to `10` since it can't be always `10` _([learn more about proportionality](#the-concept-of-proportionality))_. In this case, the new step would be `5`.<br>
+**Did You Know?** This is the only JS framework that has this feature to such a flexible extent.<br>
 ### Why Smooth?
 - Makes your slider look so much better.
-- No extra calculations needed, just enter your bounds (min-max) and the number of internal ranges _(if you explicitly need them)_.
-**Did You Know?**<br>This is the only JS framework that has this feature to such a flexible extent. 
-**Note: **This is a beta-feature with improvement scopes in the future.
+- No extra calculations needed, just enter your bounds (min-max) and the number of internal ranges _(if you explicitly need them)_.<br>
+- Improves user interface and makes your website so cool.<br>
 
 ## Upcoming Patches/Updates for Version 2.0 _(high - low priority)_:
-- []Fix v1 code bugs _(not discovered as of yet)_
-- []Website that displays all functionalities.
-- []New scale to display `min` and `max` values.
-- []Improved design configuration to support all web designs.
-- []A new system for attributes.
+- [ ] Fix v1 code bugs _(not discovered as of yet)_
+- [ ] Website that displays all functionalities.
+- [ ] New scale to display `min` and `max` values.
+- [ ] Improved design configuration to support all web designs.
+- [ ] A new system for attributes.
