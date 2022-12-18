@@ -232,7 +232,6 @@ function getFactors(num, close=null, min=true, extraSmall=false){
 function smooth(range, count=null){
     if (range < 100) var factors = getFactors(range, null, false, true)
     else var factors = getFactors(range, null, false)
-    console.log(factors)
     var factorsCount = factors.map(n => range/n)
     if (count){
         if (factorsCount.includes(count)) return factors[factorsCount.indexOf(count)]
