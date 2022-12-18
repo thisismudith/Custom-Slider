@@ -263,14 +263,14 @@ This is a **beta-feature** and will be improved in the future.<br>
 **Acceptable Value:** `javascript function` _(only proper javascript function with syntaxes can run)_<br>
 **Usage:**
 ```
-<custom-slider onchange="logger(this.getAttribute('sliderValue'))"></custom-slider>
+<custom-slider onchange="logger(this.val)"></custom-slider>
 <script>
-logger(val){
-    console.log(val)
+function logger(val){
+    console.log(eval(val))
 }
 </script>
 ```
-This keeps on logging the new value of the slider in console. [_(learn more about sliderValue)_](#how-to-do-it)<br>
+This keeps on logging the new value of the slider in console. [_(learn more about `.val`)_](#how-to-do-it)<br>
 **Note:** This attribute only supports calling function with the args, and not creating functions inside. [Learn more](#use-for-devs)
 
 ### Use For Devs:
@@ -278,15 +278,15 @@ This JS framework provides support for developers to easily fetch the value of t
 #### How to do it?
 ```
 // If you have only 1 slider
-var sliderValue = document.querySelector("custom-slider").getAttribute("sliderValue")
+var sliderValue = document.querySelector("custom-slider").val
 
 // If you have multiple sliders
 var sliderValues = {};
-document.querySelectorAll("custom-slider").forEach(slider => sliderValues[slider.id] = slider.getAttribute("sliderValue"))
+document.querySelectorAll("custom-slider").forEach(slider => sliderValues[slider.id] = slider.val)
 
 // If you want value of a specific slider
 var querySelector = "" // your query selector here
-var customValue = document.querySelector(querySelector).getAttribute("sliderValue")
+var customValue = document.querySelector(querySelector).val
 ```
 ## Upcoming Patches/Updates for Version 2.0 _(high - low priority)_:
 - [ ] Fix v1 code bugs _(not discovered as of yet)_
