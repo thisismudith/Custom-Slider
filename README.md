@@ -1,5 +1,5 @@
 # Custom-Slider
-This is an [easy-to-use](#installation) custom range slider with [19 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
+This is an [easy-to-use](#installation) custom range slider with [20 configurable options](#customizable-attributes). It is developed using HTML, CSS, and Vanilla JS with no additional modules required.
 
 ## Installation:
 Add this script tag in the ending of your body:
@@ -33,6 +33,7 @@ _Note: This is a default slider which can be [customized](#customizable-attribut
 - [`hideValue`](#hidevalue): This hides the slider value from being displayed.
 - [`forceContinue`](#forcecontinue): This continues with the slider parameters passed, irrespective of proportionality. [Learn more](#the-concept-of-proportionality)
 - [`smooth`](#smooth): This makes your range slider more smoother. [Learn more](#why-smooth)
+- [`onchange`](#onchange): This allows you to run custom functions on value change. [Learn more](#use-for-devs)
 
 _(Default values are appicable if nothing is passed or when the passed input is not acceptable)_
 <br>
@@ -249,16 +250,47 @@ This will update `step` to make the slider move smoothly.
 <custom-slider smooth="10"></custom-slider>
 ```
 This will update `step` to make the slider move smoothly with minium 10 ranges in between.<br>
-For example the range bound is `0 -50` with default step `1`. This makes the slider have 50 internal range values. Using `smooth="10"` will calculate a value such that the internal ranges are closest to `10` since it can't be always `10` _([learn more about proportionality](#the-concept-of-proportionality))_. In this case, the new step would be `5`.<br>
+For example the range bound is `0 -50` with default step `1`. This makes the slider have 50 internal range values. Using `smooth="10"` will calculate a value such that the internal ranges are closest to at least `10` since it can't be always `10` _([learn more about proportionality](#the-concept-of-proportionality))_. In this case, the new step would be `5`.<br>
 **Did You Know?** This is the only JS framework that has this feature to such a flexible extent.<br>
 ### Why Smooth?
 - Makes your slider look so much better.
 - No extra calculations needed, just enter your bounds (min-max) and the number of internal ranges _(if you explicitly need them)_.<br>
 - Improves user interface and makes your website so cool.<br>
 
+### `onchange`:
+This is a **beta-feature** and will be improved in the future.<br>
+**Default Value:** `null`<br>
+**Acceptable Value:** `javascript function` _(only proper javascript function with syntaxes can run)_<br>
+**Usage:**
+```
+<custom-slider onchange="logger(this.val)"></custom-slider>
+<script>
+function logger(val){
+    console.log(eval(val))
+}
+</script>
+```
+This keeps on logging the new value of the slider in console. [_(learn more about `.val`)_](#how-to-do-it)<br>
+**Note:** This attribute only supports calling function with the args, and not creating functions inside. [Learn more](#use-for-devs)
+
+### Use For Devs:
+This JS framework provides support for developers to easily fetch the value of the slider for custom usage.<br>
+#### How to do it?
+```
+// If you have only 1 slider
+var sliderValue = document.querySelector("custom-slider").val
+
+// If you have multiple sliders
+var sliderValues = {};
+document.querySelectorAll("custom-slider").forEach(slider => sliderValues[slider.id] = slider.val)
+
+// If you want value of a specific slider
+var querySelector = "" // your query selector here
+var customValue = document.querySelector(querySelector).val
+```
 ## Upcoming Patches/Updates for Version 2.0 _(high - low priority)_:
 - [ ] Fix v1 code bugs _(not discovered as of yet)_
-- [ ] Website that displays all functionalities.
+- [ ] New attributes for an even better configuration.
+- [ ] A new system for attribute management.
 - [ ] New scale to display `min` and `max` values.
 - [ ] Improved design configuration to support all web designs.
-- [ ] A new system for attributes.

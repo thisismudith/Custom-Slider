@@ -25,7 +25,7 @@ let stylesheetText = `
 }
 #slider-track{
     position: absolute;
-    left: 0;
+    left: 0%;
     width: 100%;
     height: var(--track-height);
     border-radius: var(--track-radius);
