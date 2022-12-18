@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Custom Slider</title>
+</head>
+<body>
+    <div class="main">
+        <div class="title">
+            <h1 class="ginto-normal">Create Your Own Slider!</h1>
+            <h3 class="ginto-normal">With this tool you can create custom range sliders that are easily configurable.</h3>
+        </div>
+        <div class="content">
+            <div class="slider">
+                <div class="viewport">
+                    <div class="colors">
+                        <toolcool-color-picker color="#494949" id="trackColor" title="Track Color"></toolcool-color-picker>
+                        <toolcool-color-picker color="#0084c2" id="fillColor" title="Fill Color"></toolcool-color-picker>
+                        <toolcool-color-picker color="#EDEDEE" id="thumbColor" title="Thumb Color"></toolcool-color-picker>
+                        <toolcool-color-picker color="#0084c2" id="textColor" title="Text Color"></toolcool-color-picker>
+                        <toolcool-color-picker color="#0084c2" id="doneColor" title="Done Color"></toolcool-color-picker>
+                    </div>
+                    <custom-slider></custom-slider>
+                </div>
+                <!-- Config -->
+                <div class="configure">
+                    <h3 class="mid-title">Slider</h3>
+                    <!-- Basic Values -->
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="width">Min:</label>
+                            <input type="number" id="min" name="min" value="0" updateMinMax oninput="slider(this, round(parseFloat(this.value),3))"/>
+                        </div>
+                        <div class="col-6">
+                            <label for="height">Max:</label>
+                            <input type="number" id="max" name="max" value="100" updateMinMax oninput="slider(this, round(parseFloat(this.value), 3))"/>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Step: 1</p>
+                        <custom-slider id="step" min="1" onchange="textUpdate(this.getAttribute('sliderValue'), 'Step: ', this.parentElement.querySelector('p'))" thumbRadius="60px" thumbWidth="20px" thumbHeight="20px" trackRadius="60px" thumbColor="#007BFF" height="8px" trackColor="#DEE2E6" fillColor="transparent" hideValue></custom-slider>
+                    </div>
+                    <div>
+                        <p>Value: 0</p>
+                        <custom-slider smooth id="value" onchange="textUpdate(this.getAttribute('sliderValue'), 'Value: ', this.parentElement.querySelector('p'))" thumbRadius="60px" thumbWidth="20px" thumbHeight="20px" trackRadius="60px" thumbColor="#007BFF" height="8px" trackColor="#DEE2E6" fillColor="transparent" hideValue></custom-slider>
+                    </div>
+                    <hr>
+                    <!-- Track Style -->
+                    <h3 class="mid-title">Track</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="width">Width:</label>
+                            <input type="text" id="width" value="100%"/>
+                        </div>
+                        <div class="col-6">
+                            <label for="height">Height:</label>
+                            <input type="text" id="height" value="18px" />
+                        </div>
+                    </div>
+                    <p class="note">Note: You can use <code>%</code> to make it responsive.</p>
+                    <div>
+                        <p>Radius: 4px</p>
+                        <custom-slider id="trackRadius" min="0" max="60" value="4" onchange="textUpdate(this.getAttribute('sliderValue'), 'Radius: ', this.parentElement.querySelector('p'), 'px')" thumbRadius="60px" thumbWidth="20px" thumbHeight="20px" trackRadius="60px" thumbColor="#007BFF" height="8px" trackColor="#DEE2E6" fillColor="transparent" hideValue></custom-slider>
+                    </div>
+                    <hr>
+                    <!-- Thumb Style -->
+                    <h3 class="mid-title">Thumb</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="thumbWidth">Width:</label>
+                            <input type="text" id="thumbWidth" value="8px"/>
+                        </div>
+                        <div class="col-6">
+                            <label for="thumbHeight">Height:</label>
+                            <input type="text" id="thumbHeight" value="15px" />
+                        </div>
+                    </div>
+                    <p class="note">Note: You can use <code>%</code> to make it responsive.</p>
+                    <div>
+                        <p>Thumb Radius: 1px</p>
+                        <custom-slider id="thumbRadius" min="0" max="60" value="1" onchange="textUpdate(this.getAttribute('sliderValue'), 'Thumb Radius: ', this.parentElement.querySelector('p'), 'px')" thumbRadius="60px" thumbWidth="20px" thumbHeight="20px" trackRadius="60px" thumbColor="#007BFF" height="8px" trackColor="#DEE2E6" fillColor="transparent" hideValue></custom-slider>
+                    </div>
+                    <hr>
+                    <h3 class="mid-title">Transition</h3>
+                    <div>
+                        <p>Time: 0s</p>
+                        <custom-slider id="thumbRadius" min="0" max="5" smooth onchange="textUpdate(this.getAttribute('sliderValue'), 'Time: ', this.parentElement.querySelector('p'), 's')" thumbRadius="60px" thumbWidth="20px" thumbHeight="20px" trackRadius="60px" thumbColor="#007BFF" height="8px" trackColor="#DEE2E6" fillColor="transparent" hideValue></custom-slider>
+                    </div>
+                    <hr>
+                    <h3 class="mid-title">Other</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="thumbWidth">Smooth Count:</label>
+                            <input type="text" id="smooth" value="0"/>
+                        </div>
+                        <div class="col-6">
+                            <label for="thumbHeight">Change Function:</label>
+                            <input type="text" id="thumbHeight" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <div class="check-holder">
+                            <input id="hideValue" type="checkbox">
+                            <label for="hideValue">Hide Value</label>                
+                        </div>
+                    </div>
+                    <div class="center">
+                        <div class="check-holder">
+                            <input id="forceContinue" type="checkbox">
+                            <label for="forceContinue">Force Continue</label>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-space">
+                <p>&lt;custom-slider>&lt;/custom-slider&gt;<br>&lt;script src="https://themyth1710.github.io/Custom-Slider/slider.js">&lt;/script&gt;</p>
+            </div>
+        </div>
+        <hr style="width: 85%; margin: 50px auto;">
+    </div>
+</div>
+
+<!-- Docs -->
+<a class="help" href="https://github.com/TheMyth1710/Custom-Slider/blob/main/README.md" target="_blank">?</a>
+<!-- Github -->
+<a href="https://github.com/TheMyth1710/Custom-Slider" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:var(--dark-blue); color:var(--white); position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <script src="slider.js"></script>
+    <script>
+        function round(num, digits){
+            if (num.toString().includes('.')){
+                var dec = num.toFixed(digits).toString().split('.').at(-1)
+                if (dec % 10){
+                    dec = dec.slice(3)
+                }else if (dec % 100){}
+            }return num
+        }
+        function textUpdate(value, text, DOM, end=""){
+            if (end) eval(DOM).innerHTML = eval(text)+eval(value.toString())+eval(end)
+            else eval(DOM).innerHTML = eval(text)+eval(value.toString())
+        }
+        function updateColor(target, color){
+            if (target == "fillColor" && document.querySelector("#doneColor").getAttribute("clr") != "#0084c2"){
+                document.querySelector("#doneColor").setAttribute("color", color)
+            }
+        }
+        function slider(elm, val){
+            if (elm.hasAttribute("updateMinMax")){
+                elm.addEventListener("focusout", ()=>{elm.value = val;});
+                val = parseFloat(val.toFixed(3).toString().replaceAll("(?<=^\\d+)\\.0*$", ""));
+                if (elm.name == "min"){
+                    if (!val) val = 0;
+                    if (val.toString().includes('.')) elm.val = parseFloat(val);
+                    document.querySelector("#value").parentElement.querySelector("p").innerHTML = `Value: ${val}`
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("min", val)
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("max", document.querySelector("#max").value)
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("step", getFactors(document.querySelector("#max").value-val))
+                }else{
+                    if (!val) val = 100;
+                    document.querySelector("#step").shadowRoot.querySelector("input").setAttribute("max", val - document.querySelector("#min").value)
+                    document.querySelector("#value").parentElement.querySelector("p").innerHTML = `Value: ${document.querySelector("#min").value}`
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("min", document.querySelector("#min").value)
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("max", val)
+                    document.querySelector("#value").shadowRoot.querySelector("input").setAttribute("step", getFactors(val-document.querySelector("#min").value))
+                }
+            }
+        }
+        // Color change event
+        document.querySelectorAll("toolcool-color-picker").forEach(color => {
+            color.addEventListener('focusout', ()=>{updateColor(color.id, color.getAttribute("clr"))})
+            color.addEventListener('change', (evt) => {color.setAttribute('clr', evt.detail.hex)})
+        })
+        
+    </script>
+    <script src="color.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLWL5N9CSM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LLWL5N9CSM');
+    </script>
+    
+    <!-- <script type="text/javascript" src="https://themyth1710.github.io/Custom-Slider/slider.js"></script> -->
+</body>
+</html>
