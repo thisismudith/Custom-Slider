@@ -165,7 +165,9 @@ class customSlider extends HTMLElement{
         let text = this.root.getElementById("value");
         text.style.marginTop = this.height/2+"px";
         var sliderValue;
-        if (!this.hasAttribute("hideValue")) sliderValue = this.root.getElementById("value");
+        sliderValue = this.root.getElementById("value");
+        if (this.hasAttribute("hideValue")) sliderValue.style.display = "none";
+        else sliderValue.style.display = "";
         if (slider.value == this.max){
             track.style.setProperty('--slider-fill-color', this.doneColor);
             if (sliderValue){
