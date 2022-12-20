@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Custom Slider">
+    <meta property="og:description" content="Create a custom slider to make your website more interesting. v1.0 is out now!">
+    <meta property="og:image" content="https://themyth1710.github.io/Custom-Slider/image.png">
     <link rel="stylesheet" href="style.css">
     <title>Custom Slider</title>
 </head>
@@ -23,7 +26,7 @@
                         <toolcool-color-picker sliderUpdate defaultVal="#0084c2" color="#0084c2" id="textColor" title="Text Color"></toolcool-color-picker>
                         <toolcool-color-picker sliderUpdate defaultVal="#0084c2" color="#0084c2" id="doneColor" title="Done Color"></toolcool-color-picker>
                     </div>
-                    <custom-slider id="bruh"></custom-slider>
+                    <custom-slider></custom-slider>
                 </div>
                 <!-- Config -->
                 <div class="configure">
@@ -117,6 +120,7 @@
             </div>
             <div class="code-space">
                 <p>&lt;custom-slider&gt;&lt;/custom-slider&gt;<br>&lt;script src="https://themyth1710.github.io/Custom-Slider/slider.js"&gt;&lt;/script&gt;</p>
+                <button class="copy ginto-normal" onclick="navigator.clipboard.writeText(document.querySelector('.code-space p').innerText);this.innerHTML='Copied';">Copy</button>
             </div>
         </div>
         <hr style="width: 85%; margin: 50px auto;">

@@ -110,6 +110,20 @@ body{
 .code-space p{
     font-family: "Ginto Normal";
 }
+.copy{
+    padding: 7.5px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    color: var(--aqua);
+    border: 1px solid var(--aqua);
+    transition: all .3s ease-in-out;
+}
+.copy:hover{
+    color: var(--white);
+    background-color: var(--aqua);
+}
 .viewport{
     position: relative;
     display: table;
