@@ -1,18 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-@font-face{
-    font-family:Ginto Nord;
-    font-weight:800;
-    src:url(/assets/fonts/ginto-800.woff2) format("woff2"),url(/assets/fonts/ginto-800.woff) format("woff")
-}
 @font-face{
     font-family:Ginto Normal;
     font-weight:400;
     src:url(/assets/fonts/ginto-400.woff2) format("woff2"),url(/assets/fonts/ginto-400.woff) format("woff")
-}
-@font-face{
-    font-family:Ginto Normal;
-    font-weight:700;
-    src:url(/assets/fonts/ginto-700.woff2) format("woff2"),url(/assets/fonts/ginto-700.woff) format("woff")
 }
 :root{
     --white: #F5F5F5;
@@ -38,15 +27,6 @@
 body{
     background-color: var(--white);
 }
-.ginto-nord{
-    font-family: "Ginto Nord" !important;
-}
-.ginto-normal{
-    font-family: "Ginto Normal" !important;
-}
-.poppins{
-    font-weight: "Poppins", sans-serif !important;
-}
 .center{
     display: flex;
     justify-content: center;
@@ -62,7 +42,7 @@ body{
     text-decoration: underline;
 }
 *{
-    font-family: "Poppins", sans-serif;
+    font-family: "Ginto Normal", sans-serif;
 }
 .main{
     display: grid;
@@ -106,9 +86,6 @@ body{
     margin: 0 150px;
     padding: 10px 20px; 
     border: 3px solid rgba(214, 230, 242, 0.4);
-}
-.code-space p{
-    font-family: "Ginto Normal";
 }
 .copy{
     padding: 7.5px;
