@@ -11,7 +11,7 @@ For a simple use add the HTML snippet anywhere you wish to create a slider:
 <custom-slider></custom-slider>
 ```
 
-## [View In  Action](https://themyth1710.github.io/Custom-Slider/)
+## [View In  Action](https://thisismudith.github.io/Custom-Slider/)
 ![image](https://user-images.githubusercontent.com/72611306/208672317-db3f350d-17c8-4353-8d44-bd04d066a523.png)
 
 _Note: This is a default slider which can be [customized](#customizable-attributes)_
