@@ -3,6 +3,6 @@
     "href": "Website",
     "image": "https://raw.githubusercontent.com/thisismudith/Custom-Slider/main/web-preview/preview.png",
     "link": "https://thisismudith.github.io/Custom-Slider/",
-    "modules": ["JS Framework"],
+    "languages": ["HTML", "CSS", "Javascript", "JS Framework"],
     "status": true
 }
